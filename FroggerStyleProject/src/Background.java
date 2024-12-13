@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Sprite{
+public class Background{
 	private Image forward, backward, left, right; 	
 	private AffineTransform tx;
 	//attributes of this class
@@ -14,22 +14,22 @@ public class Sprite{
 	int width, height;
 	int x, y;						//position of the object
 	int vx, vy;						//movement variables
-	double scaleWidth = .25;		//change to scale image
-	double scaleHeight = .25; 		//change to scale image
+	double scaleWidth = 1;		//change to scale image
+	double scaleHeight = 1; 		//change to scale image
 
-	public Sprite() {
+	public Background() {
 		//load the main image(front or forward view)
-		forward 	= getImage("/imgs/"+"snowman.png"); //load the image for Tree
+		forward 	= getImage("/imgs/"+"BackgroundFinal.png"); //load the image for Tree
 		//backward 	= getImage("/imgs/"+"backward.png"); //load the image for Tree
 		//left 		= getImage("/imgs/"+"left.png"); //load the image for Tree
 		//right 		= getImage("/imgs/"+"right.png"); //load the image for Tree
 
 		//alter these
-		width = 100;
-		height = 100;
+		width = 0;
+		height = 0;
 		
-		x = 600/2-width/2;
-		y = 600;
+		x = 0;
+		y = 0;
 		vx = 0;
 		vy = 0;
 		
@@ -51,10 +51,9 @@ public class Sprite{
 		
 		g2.drawImage(forward, tx, null);
 		if(Frame.debugging) {
-			g.setColor(Color.green);
-			g.drawRect(x, y, width, height);
+			//g.setColor(Color.green);
+			//g.drawRect(x, y, width, height);
 		}
-		
 		/*switch(dir) {
 		case 0:
 			g2.drawImage(forward, tx, null);
@@ -82,7 +81,7 @@ public class Sprite{
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Sprite.class.getResource(path);
+			URL imageURL = Background.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();
